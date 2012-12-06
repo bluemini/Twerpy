@@ -1,7 +1,7 @@
 onload = function() {
 
 	// login
-	login('gyoudtpY1LqdomXIQ9BNJw', 'zCGBAc8b7xDe2gPKSexWh9cw26VT5O2ZWkdgPpwKM');
+	login('nonsense', 'nonsense');
 
 	// get the template item and insert it into the list
 	var tweetList = document.getElementById("tweet-space-list");
