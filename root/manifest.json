@@ -1,0 +1,23 @@
+{
+	"name": "Twerpy",
+	"version": "0.1",
+	"manifest_version": 2,
+
+	"description": "Twitter client from Bluemini",
+	"icons": {
+		"16": "img/calculator-16.png",
+		"128": "img/calculator-128.png"
+	},
+
+	"app": {
+		"background": {
+			"scripts": [
+				"main.js"
+			]
+		}
+	},
+	"permissions": [
+		"https://twimg0-a.akamaihd.net/",
+		"https://api.twitter.com/oauth/access_token"
+	]
+}

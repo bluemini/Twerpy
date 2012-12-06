@@ -1,0 +1,49 @@
+body {
+	background-color: #444;
+	color: #ccc;
+	font-family: arial, verdana, 'sans-serif';
+	font-size: 0.8em;
+	margin: 0;
+	padding: 0 6px;
+}
+h1, h2, h3, h4, h5, h6, p { font-size: 1em; margin: 0; padding: 0; }
+ul { list-style: none; padding: 0; margin: 0; }
+li { margin: 0; padding: 0; }
+.template { display: none; }
+
+#title {
+	font-size: 1.2em;
+	padding: 0.2em 0;
+}
+
+#tweet-space {}
+
+#tweet-space-title {
+	background-color: #ccc;
+	color: #555;
+	margin: 0 -6px;
+	padding: 0.4em 6px;
+}
+
+#tweet-space-list { }
+
+#tweet-space-list .tweet-view {
+	border-bottom: 1px solid #ccc;
+	margin: 0 -6px;
+	padding: 4px 6px;
+}
+#tweet-space-list .tweet-view a.tweet-view-handle-icon { float: left; margin: 0 4px 4px 0; }
+#tweet-space-list .tweet-view a.tweet-view-handle-icon img { width: 50px; height: 50px; }
+
+#tweet-space-list .tweet-view h3 {}
+#tweet-space-list .tweet-view .twitter-handle {}
+
+#tweet-space-list .tweet-view p { }
+
+#tweet-space-list .tweet-view .tweet-space-tweet-footer { clear: both; }
+#tweet-space-list .tweet-view .tweet-space-tweet-footer ul { display: inline;}
+#tweet-space-list .tweet-view .tweet-space-tweet-footer li { display: inline;}
+#tweet-space-list .tweet-view .tweet-space-tweet-footer .tweet-view-conversation {}
+#tweet-space-list .tweet-view .tweet-space-tweet-footer .tweet-view-reply {}
+#tweet-space-list .tweet-view .tweet-space-tweet-footer .tweet-view-delete {}
+#tweet-space-list .tweet-view .tweet-space-tweet-footer .tweet-view-favorite {}
