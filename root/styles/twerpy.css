@@ -1,3 +1,40 @@
+/*
+ * Copyright (c) 2012, Nick Harvey
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ * - Redistributions of source code must retain the above copyright notice, this
+ *   list of conditions and the following disclaimer.
+ * - Redistributions in binary form must reproduce the above copyright notice, 
+ *   this list of conditions and the following disclaimer in the documentation
+ *   and/or other materials provided with the distribution.
+ * - Neither the name of the <ORGANIZATION> nor the names of its contributors
+ *   may be used to endorse or promote products derived from this software 
+ *   without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE 
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+/*
+I am using a:
+TOP/COMBINED (T&Cs) approach to the CSS rules.
+
+Top level elements are given id/class names that start with t_
+Lower level elements, that combine rules, are givent class names that start with c_
+
+When editing, be aware of whether you're editing a TOP rule or a combined rule
+*/
 body {
 	background-color: #444;
 	color: #ccc;
@@ -5,6 +42,7 @@ body {
 	font-size: 0.8em;
 	margin: 0;
 	padding: 0 6px;
+	width: 288px;
 }
 h1, h2, h3, h4, h5, h6, p { font-size: 1em; margin: 0; padding: 0; }
 ul { list-style: none; padding: 0; margin: 0; }
@@ -32,18 +70,33 @@ li { margin: 0; padding: 0; }
 	margin: 0 -6px;
 	padding: 4px 6px;
 }
-#tweet-space-list .tweet-view a.tweet-view-handle-icon { float: left; margin: 0 4px 4px 0; }
-#tweet-space-list .tweet-view a.tweet-view-handle-icon img { width: 50px; height: 50px; }
+#tweet-space-list .tweet-view a.handle.icon { 
+	float: left;
+	margin: 0 4px 4px 0;
+}
+#tweet-space-list .tweet-view a.handle.icon img {
+	width: 50px;
+	height: 50px;
+}
 
-#tweet-space-list .tweet-view h3 {}
-#tweet-space-list .tweet-view .twitter-handle {}
+#tweet-space-list .tweet-view h3 {
+	color: white;
+}
+#tweet-space-list .tweet-view .twitter-handle {
+	font-weight: normal;
+	font-style: italic;
+	font-size: 0.9em;
+	color: #999;
+}
 
-#tweet-space-list .tweet-view p { }
+#tweet-space-list .tweet-view p {
+	font-size: 0.9em;
+}
 
-#tweet-space-list .tweet-view .tweet-space-tweet-footer { clear: both; }
-#tweet-space-list .tweet-view .tweet-space-tweet-footer ul { display: inline;}
-#tweet-space-list .tweet-view .tweet-space-tweet-footer li { display: inline;}
-#tweet-space-list .tweet-view .tweet-space-tweet-footer .tweet-view-conversation {}
-#tweet-space-list .tweet-view .tweet-space-tweet-footer .tweet-view-reply {}
-#tweet-space-list .tweet-view .tweet-space-tweet-footer .tweet-view-delete {}
-#tweet-space-list .tweet-view .tweet-space-tweet-footer .tweet-view-favorite {}
+#tweet-space-list .tweet-view .footer { clear: both; }
+#tweet-space-list .tweet-view .footer ul { display: inline;}
+#tweet-space-list .tweet-view .footer li { display: inline;}
+#tweet-space-list .tweet-view .footer .tweet-view-conversation {}
+#tweet-space-list .tweet-view .footer .tweet-view-reply {}
+#tweet-space-list .tweet-view .footer .tweet-view-delete {}
+#tweet-space-list .tweet-view .footer .tweet-view-favorite {}
