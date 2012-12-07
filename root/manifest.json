@@ -17,7 +17,9 @@
 		}
 	},
 	"permissions": [
-		"https://twimg0-a.akamaihd.net/",
+		"audioCapture",
+    	"videoCapture",
+	    "https://twimg0-a.akamaihd.net/",
 		"https://api.twitter.com/oauth/access_token"
 	]
 }

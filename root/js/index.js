@@ -1,7 +1,7 @@
 onload = function() {
 
 	// login
-	login('nonsense', 'nonsense');
+	// login('nonsense', 'nonsense');
 
 	// get the template item and insert it into the list
 	var tweetList = document.getElementById("tweet-space-list");
@@ -14,7 +14,7 @@ onload = function() {
 		var img = document.getElementById('test-image');
 		img.src = window.webkitURL.createObjectURL(this.response);
 	};
-	xhr.send();
+	// xhr.send();
 };
 
 tweet = function() {
@@ -56,13 +56,67 @@ login = function(consumerKey, consumerSecret) {
 
 
 // template the provided id with the supplied data
-templateFill = function(tmp_id, data) {
+function templateFill(tmp_id, data) {
 	var tmpElem = document.getElementById(tmp_id);
 	var tmpRoot = document.createElement("div");
+
+	// use the template function to convert text to a function
+	// var fn = template(tmpElem.innerHTML);
+
 	// cleanse any whitespace (== text nodes) before the 'real' data
-	tmpRoot.innerHTML = tmpElem.innerHTML.replace(/^\s*/, '');
+	var fn = template(tmpElem.innerHTML);
+	tmpRoot.innerHTML = fn({'user-name':'Nick Harvey', 'user-handle':'@blewmini'}).replace(/^\s*/, '');
 	return tmpRoot.firstChild;
 }
 
+// evaluate a string as a function
+// borrowed HEAVILY from the underscore.js library
+function template(text, data) {
+	var matcher = new RegExp(/{:([\s\S]+?):}/g);
+	var place = 0;
+	var s = [];
 
-	
+	console.log("Attempting to resolve: " + text);
+
+	text.replace(matcher, function(match, key, offset) {
+		// add the bit up to the dynamic area..
+		s.push({string:text.slice(place, offset)});
+		// add the dynamic data
+		s.push({dynamic:key});
+
+		console.log("found: "+s);
+		place = offset + match.length;
+	})
+	s.push({string:text.slice(place)});
+
+	console.log("s: " + s);
+
+	var render = function(data) {
+		var o = '';
+		var d = data || {};
+		for (i=0; i<s.length; i++) {
+			if (s[i].dynamic) {
+				if (d[s[i].dynamic]) {
+					o += d[s[i].dynamic];
+				} else {
+					console.error("Unknown dynamic argument: " + s[i].dynamic);
+				}
+			} else if (s[i].string) {
+				o += s[i].string;
+			}
+		}
+		console.log("Output: "+o);
+		return o;
+	}
+
+	return render;
+}
+
+
+// function showVideo() {
+// 	navigator.webkitGetUserMedia({video: true, audio: true}, function(localMediaStream) { 
+// 		document.querySelector('video').src = webkitURL.createObjectURL(localMediaStream);
+// 	}, function(error) {
+// 		console.error('error');
+// 	});	
+// }
