@@ -3,9 +3,16 @@ onload = function() {
 	// login
 	// login('nonsense', 'nonsense');
 
-	// get the template item and insert it into the list
-	var tweetList = document.getElementById("tweet-space-list");
-	tweetList.appendChild(templateFill("tmp-tweet-item", {}));
+	refreshFeed([{'user-name':'Nick Harvey',
+				'user-handle':'@blewmini',
+				'tweet-text':'@whoeveryouare this is my test tweet that you should read...'
+			},{'user-name':'Sean Corfield',
+				'user-handle':'@seancorfield',
+				'tweet-text':'RT @fuzie: Deadline for @cfobjective speaker submissions is Sunday. If you\'ve drafted a proposal, pull the trigger! #cfobjective'
+			},{'user-name':'Kevin Lawler',
+				'user-handle':'@kevinlawler',
+				'tweet-text':'Thought experiment: if software had never been free of charge, would programmers be monetarily richer or poorer than other professions? Why?'
+			}]);
 
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', 'https://twimg0-a.akamaihd.net/profile_images/1211293827/bluemini_normal.gif', true);
@@ -17,10 +24,16 @@ onload = function() {
 	// xhr.send();
 };
 
-tweet = function() {
-
-	// 
-
+/*
+ * pass in the response from Twitter's API and render as new elements in the list
+ */
+function refreshFeed(tweetListData) {
+	// get the template item and insert it into the list
+	var tweetList = document.getElementById("tweet-space-list");
+	for (var i=0; i<tweetListData.length;i++) {
+		console.log("hello");
+		tweetList.appendChild(tweetFill("tmp-tweet-item", tweetListData[i]));
+	}
 }
 
 
@@ -56,61 +69,16 @@ login = function(consumerKey, consumerSecret) {
 
 
 // template the provided id with the supplied data
-function templateFill(tmp_id, data) {
+function tweetFill(tmp_id, data) {
 	var tmpElem = document.getElementById(tmp_id);
 	var tmpRoot = document.createElement("div");
 
-	// use the template function to convert text to a function
-	// var fn = template(tmpElem.innerHTML);
-
 	// cleanse any whitespace (== text nodes) before the 'real' data
 	var fn = template(tmpElem.innerHTML);
-	tmpRoot.innerHTML = fn({'user-name':'Nick Harvey', 'user-handle':'@blewmini'}).replace(/^\s*/, '');
+	tmpRoot.innerHTML = fn(data).replace(/^\s*/, '');
 	return tmpRoot.firstChild;
 }
 
-// evaluate a string as a function
-// borrowed HEAVILY from the underscore.js library
-function template(text, data) {
-	var matcher = new RegExp(/{:([\s\S]+?):}/g);
-	var place = 0;
-	var s = [];
-
-	console.log("Attempting to resolve: " + text);
-
-	text.replace(matcher, function(match, key, offset) {
-		// add the bit up to the dynamic area..
-		s.push({string:text.slice(place, offset)});
-		// add the dynamic data
-		s.push({dynamic:key});
-
-		console.log("found: "+s);
-		place = offset + match.length;
-	})
-	s.push({string:text.slice(place)});
-
-	console.log("s: " + s);
-
-	var render = function(data) {
-		var o = '';
-		var d = data || {};
-		for (i=0; i<s.length; i++) {
-			if (s[i].dynamic) {
-				if (d[s[i].dynamic]) {
-					o += d[s[i].dynamic];
-				} else {
-					console.error("Unknown dynamic argument: " + s[i].dynamic);
-				}
-			} else if (s[i].string) {
-				o += s[i].string;
-			}
-		}
-		console.log("Output: "+o);
-		return o;
-	}
-
-	return render;
-}
 
 
 // function showVideo() {
